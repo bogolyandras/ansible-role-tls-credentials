@@ -1,7 +1,10 @@
-Role Name
+TLS credentials
 =========
 
 A brief description of the role goes here.
+
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-bogolyandras.tls-credentials-66666.svg?style=flat)](https://galaxy.ansible.com/bogolyandras/tls-credentials)
+[![Build Status](https://travis-ci.com/bogolyandras/ansible-role-tls-credentials.svg?branch=main)](https://travis-ci.com/bogolyandras/ansible-role-tls-credentials)
 
 Requirements
 ------------
@@ -11,8 +14,13 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
+```yaml
+tls_key_path_source: /path/to/my.key
+tls_cert_path_source: /path/to/my.crt
+tls_root_dir: /etc/pki/mykey
+tls_key_path: "{{ tls_root_dir }}/tls.key"
+tls_cert_path: "{{ tls_root_dir }}/tls.crt"
+```
 Dependencies
 ------------
 
@@ -23,9 +31,22 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+---
+- hosts: servers
+  become: true
+  vars:
+      tls_key_path_source: /path/to/my.key
+      tls_cert_path_source: /path/to/my.crt
+      tls_root_dir: /etc/pki/mykey
+      tls_key_path: "{{ tls_root_dir }}tls.key"
+      tls_cert_path: "{{ tls_root_dir }}tls.crt"
+  roles:
+    - tls-credentials
+    - vsftpd
+    - nginx
+
+```
 
 License
 -------

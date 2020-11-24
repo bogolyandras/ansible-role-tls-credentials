@@ -1,2 +1,21 @@
 ---
 # tasks file for tls-credentials
+- name: Create a directory for TLS key and certificate
+  file:
+    path: "{{ tls_root_dir }}"
+    state: directory
+    mode: u+rw,g-rwx,o-rwx
+- name: Place TLS key
+  ansible.builtin.copy:
+    src: "{{ tls_key_path_source }}"
+    dest: "{{ tls_key_path }}"
+    owner: root
+    group: root
+    mode: u+rw,g-rwx,o-rwx
+- name: Place TLS certificate
+  ansible.builtin.copy:
+    src: "{{ tls_cert_path_source }}"
+    dest: "{{ tls_cert_path }}"
+    owner: root
+    group: root
+    mode: u+rw,g-rwx,o-rwx
