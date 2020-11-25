@@ -3,7 +3,7 @@ TLS credentials
 
 A brief description of the role goes here.
 
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-bogolyandras.tls_credentials-52009.svg?style=flat)](https://galaxy.ansible.com/bogolyandras/tls-credentials)
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-bogolyandras.tls_credentials-52009.svg?style=flat)](https://galaxy.ansible.com/bogolyandras/tls_credentials)
 [![Build Status](https://travis-ci.com/bogolyandras/ansible-role-tls-credentials.svg?branch=main)](https://travis-ci.com/bogolyandras/ansible-role-tls-credentials)
 
 Requirements
